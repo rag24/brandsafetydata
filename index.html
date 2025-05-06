@@ -29,10 +29,6 @@
   <p><strong>PROCEDURES:</strong><br>
   I have been told that, during the course of this study, the following will occur:<br><br>
   I will be asked to read three news articles and then provide my opinion on whether the article contains any content relating to potentially “unsafe” categories such as violence, drugs/alcohol, or offensive language.</p>
- 
-  <p><strong>PROCEDURES:</strong><br>
-  I have been told that, during the course of this study, the following will occur:<br><br>
-  I will be asked to read three news articles and then provide my opinion on whether the article contains any content relating to potentially “unsafe” categories such as violence, drugs/alcohol, or offensive language.</p>
 
   <p><strong>PARTICIPANTS:</strong><br>
   I will be one of about 500 participants in this study.</p>
@@ -81,13 +77,20 @@ I have read this entire form, or it has been read to me, and I understand it com
 <button id="startSurvey" disabled>Start Survey</button>
 </div>
 
+
+
+
+
+
+    
 <div id="surveySection" style="display: none;">
   <h2>News Article Survey</h2>
 
   <p>Read the following article:</p>
   <div id="article"></div>
 
- <p>Select all categories that apply to this article:</p>
+ <form id="surveyForm">
+  <p>Select all categories that apply to this article:</p>
   
   <div id="categories">
     <label><input type="checkbox" name="categories" value="Adult & Explicit Sexual Content"> Adult & Explicit Sexual Content</label><br>
@@ -104,8 +107,8 @@ I have read this entire form, or it has been read to me, and I understand it com
     <label><input type="checkbox" name="categories" value="Misinformation"> Misinformation</label><br>
   </div>
 
-    <p><input type="submit" id="submitButton" value="Submit Survey"></p>
-  </form>
+  <p><input type="submit" id="submitButton" value="Submit Survey"></p>
+</form>
 
 <div id="result1" style="margin-top: 20px;"></div>
 <div id="result2" style="margin-top: 20px;"></div>
