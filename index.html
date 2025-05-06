@@ -101,6 +101,7 @@ I have read this entire form, or it has been read to me, and I understand it com
   </form>
 
   <div id="result" style="margin-top: 20px;"></div>
+  <div id="result2" style="margin-top: 20px;"></div>
 </div>
 
 <script>
@@ -109,6 +110,7 @@ I have read this entire form, or it has been read to me, and I understand it com
   const surveySection = document.getElementById('surveySection');
   const articleDiv = document.getElementById('article');
   const resultDiv = document.getElementById('result');
+  const result2Div = document.getElementById('result2');
 
   const articles = [
     "https://openaccess.thecvf.com/content_ICCV_2019/papers/Zhao_Optimizing_the_F-Measure_for_Threshold-Free_Salient_Object_Detection_ICCV_2019_paper.pdf",
@@ -151,10 +153,10 @@ document.getElementById('surveyForm').addEventListener('submit', function(e) {
   })
   .then(response => response.text())
   .then(result => {
-    resultDiv.innerHTML = `<strong>Thank you! Your response has been recorded.</strong>`;
+    resultDiv2.innerHTML = `<strong>Thank you! Your response has been recorded.</strong>`;
   })
   .catch(error => {
-    resultDiv.innerHTML = `<strong>Error submitting your response. Please try again.</strong>`;
+    resultDiv2.innerHTML = `<strong>Error submitting your response. Please try again.</strong>`;
   });
 });
 
