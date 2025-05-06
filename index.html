@@ -133,6 +133,44 @@ I have read this entire form, or it has been read to me, and I understand it com
     e.preventDefault();
     resultDiv.innerHTML = `<strong>You reviewed the article:</strong><br>${selectedArticle}`;
   });
+
+
+document.getElementById('surveyForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const score = document.querySelector('select[name="interest"]').value;
+
+  const data = {
+    article: selectedArticle,
+    score: score
+  };
+
+  fetch('https://script.google.com/a/macros/njit.edu/s/AKfycbz017PN95zkSwdAbWcZhZvazmTXZUpX8X-X_oh8_ehzQWsUBdPnUrZpXB84ens4KMdDcQ/exec', {
+    method: 'POST',
+    body: JSON.stringify(data),
+    contentType: 'application/json'
+  })
+  .then(response => response.text())
+  .then(result => {
+    resultDiv.innerHTML = `<strong>Thank you! Your response has been recorded.</strong>`;
+  })
+  .catch(error => {
+    resultDiv.innerHTML = `<strong>Error submitting your response. Please try again.</strong>`;
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+  
 </script>
+
+    
 </body>
 </html>
