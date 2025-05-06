@@ -3,6 +3,7 @@
 <head>
   <title>Survey</title>
 </head>
+  <body>
 <div id="consentForm">
   <h2>Consent Form</h2>
   <p><strong>NEW JERSEY INSTITUTE OF TECHNOLOGY</strong><br>
@@ -78,27 +79,9 @@ I have read this entire form, or it has been read to me, and I understand it com
 </label>
 <br><br>
 <button id="startSurvey" disabled>Start Survey</button>
-
-
-<script>
-  const checkbox = document.getElementById('signatureCheckbox');
-  const button = document.getElementById('startSurvey');
-
-  checkbox.addEventListener('change', () => {
-    button.disabled = !checkbox.checked;
-  });
-
-  button.addEventListener('click', () => {
-    document.getElementById('consentForm').style.display = 'none';
-    document.getElementById('surveySection').style.display = 'block';
-  });
-
-  
-</script>
-
+</div>
 
 <div id="surveySection" style="display: none;">
-
   <h2>News Article Survey</h2>
 
   <p>Read the following article:</p>
@@ -118,16 +101,8 @@ I have read this entire form, or it has been read to me, and I understand it com
   </form>
 
   <div id="result" style="margin-top: 20px;"></div>
-
 </div>
 
-
-
-
-
-
-
-  
 <script>
   const checkbox = document.getElementById('signatureCheckbox');
   const startButton = document.getElementById('startSurvey');
@@ -143,23 +118,21 @@ I have read this entire form, or it has been read to me, and I understand it com
 
   let selectedArticle = "";
 
+  checkbox.addEventListener('change', () => {
+    startButton.disabled = !checkbox.checked;
+  });
 
-  // Show the survey and select a random article when Start Survey is clicked
-  startButton.addEventListener('click', function() {
+  startButton.addEventListener('click', () => {
+    document.getElementById('consentForm').style.display = 'none';
     surveySection.style.display = 'block';
     selectedArticle = articles[Math.floor(Math.random() * articles.length)];
     articleDiv.innerText = selectedArticle;
-    // Optionally hide the consent section after starting
-    startButton.style.display = 'none';
-    checkbox.parentElement.style.display = 'none';
   });
 
-  // Handle survey submission
   document.getElementById('surveyForm').addEventListener('submit', function(e) {
     e.preventDefault();
     resultDiv.innerHTML = `<strong>You reviewed the article:</strong><br>${selectedArticle}`;
   });
 </script>
-
 </body>
 </html>
