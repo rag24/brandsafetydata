@@ -105,7 +105,8 @@ I have read this entire form, or it has been read to me, and I understand it com
 </div>
 
 <script>
-  const checkbox = document.getElementById('signatureCheckbox');
+let responses=[];
+const checkbox = document.getElementById('signatureCheckbox');
 const startButton = document.getElementById('startSurvey');
 const surveySection = document.getElementById('surveySection');
 const articleDiv = document.getElementById('article');
@@ -150,13 +151,17 @@ document.getElementById('surveyForm').addEventListener('submit', function(e) {
   const currentArticle = selectedArticles[currentIndex];
 
   // Show which article was reviewed
-  result1Div.innerHTML = `<strong>You reviewed the article:</strong><br>${currentArticle}`;
+  result1Div.innerHTML = '';
   result2Div.innerHTML = `Submitting your response...`;
 
   const data = {
     article: currentArticle,
     score: score
   };
+
+  responses.push({
+  article: currentArticle,
+  score: score});
 
   // SEND the data (no-cors mode)
   fetch('https://script.google.com/macros/s/AKfycbz3ZVjgqT2_sPf5zg0aXSRRB1YBNENg1YMqRu7m-WZXKPp_ceaVbOTl-K_9Ev08LtrBbA/exec', {
@@ -184,10 +189,18 @@ document.getElementById('surveyForm').addEventListener('submit', function(e) {
     } else {
       // All done
       setTimeout(() => {
-        articleDiv.innerHTML = '';
-        document.getElementById('surveyForm').style.display = 'none';
-        result2Div.innerHTML = `<strong>Survey complete! Thank you for participating.</strong>`;
-      }, 1000);
+  articleDiv.innerHTML = '';
+  document.getElementById('surveyForm').style.display = 'none';
+
+  let summaryHTML = '<strong>Survey complete! Thank you for participating.</strong><br><br>';
+  summaryHTML += '<strong>Your responses:</strong><br>';
+
+  responses.forEach((response, index) => {
+    summaryHTML += `${index + 1}. <a href="${response.article}" target="_blank">${response.article}</a><br>Rating: ${response.score}<br><br>`;
+  });
+
+  result2Div.innerHTML = summaryHTML;
+}, 1000);
     }
   })
   .catch(error => {
