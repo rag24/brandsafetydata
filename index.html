@@ -152,6 +152,8 @@ const articleDiv = document.getElementById('article');
 const result1Div = document.getElementById('result1');
 const result2Div = document.getElementById('result2');
 const submitButton = document.getElementById('submitButton');
+const instructionsSection = document.getElementById('instructionsSection');
+const instructionsbutton=document.getElementByID('startSurveyFromInstructions');
   
 //const allArticles = [
  // "https://openaccess.thecvf.com/content_ICCV_2019/papers/Zhao_Optimizing_the_F-Measure_for_Threshold-Free_Salient_Object_Detection_ICCV_2019_paper.pdf",
@@ -172,9 +174,9 @@ checkbox.addEventListener('change', () => {
 });
 
 // When Start is clicked: pick 3 unique articles, show first
-startButton.addEventListener('click', () => {
-  document.getElementById('consentForm').style.display = 'none';
-  surveySection.style.display = 'block';
+//startButton.addEventListener('click', () => {
+//  document.getElementById('consentForm').style.display = 'none';
+//  surveySection.style.display = 'block';
 
 
 
@@ -188,16 +190,8 @@ startButton.addEventListener('click', () => {
 
     // When "Start Survey" is clicked from instructions page: show survey section
 startSurveyFromInstructions.addEventListener('click', () => {
-      instructionsSection.style.display = 'none';
-      surveySection.style.display = 'block';
-
-
-
-
-
-
-
-  
+  instructionsSection.style.display = 'none';
+  surveySection.style.display = 'block';
 
   fetch('articles.json')
     .then(response => response.json())
