@@ -132,6 +132,7 @@ const submitButton = document.getElementById('submitButton');
 //  "https://www.nature.com/articles/d41586-020-00154-w"
 //  // Add more URLs here
 //];
+  
 let allArticles = [];
 let selectedArticles = [];
 let currentIndex = 0;
@@ -165,9 +166,9 @@ startButton.addEventListener('click', () => {
   // Randomly select 3 articles without replacement
   //selectedArticles = shuffleArray(allArticles).slice(0, 3);
 
-  currentIndex = 0;
-  showArticle();
-});
+ // currentIndex = 0;
+ // showArticle();
+//});
 
 // Handle survey submission
 document.getElementById('surveyForm').addEventListener('submit', function(e) {
