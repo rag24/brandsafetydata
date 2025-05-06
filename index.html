@@ -227,6 +227,7 @@ document.getElementById('surveyForm').addEventListener('submit', function(e) {
 function showArticle() {
   const article = selectedArticles[currentIndex];
   articleDiv.innerText = article;
+  clearCheckboxes(); 
 }
 
 // Fisher-Yates shuffle to randomize array
@@ -239,7 +240,9 @@ function shuffleArray(array) {
   return arr;
 }
 
-
+function clearCheckboxes() {
+  document.querySelectorAll('input[name="categories"]').forEach(cb => cb.checked = false);
+}
 
 
 
