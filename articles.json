@@ -120,7 +120,6 @@
     "https://example.com/article/118",
     "https://example.com/article/119",
     "https://example.com/article/120",
-    // ... keep counting up to 500
     "https://example.com/article/500"
   ]
 }
