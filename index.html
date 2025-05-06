@@ -124,15 +124,15 @@ const result1Div = document.getElementById('result1');
 const result2Div = document.getElementById('result2');
 const submitButton = document.getElementById('submitButton');
   
-const allArticles = [
-  "https://openaccess.thecvf.com/content_ICCV_2019/papers/Zhao_Optimizing_the_F-Measure_for_Threshold-Free_Salient_Object_Detection_ICCV_2019_paper.pdf",
-  "https://en.wikipedia.org/wiki/Weber%E2%80%93Fechner_law",
-  "https://news.google.com/home?hl=en-US&gl=US:en",
-  "https://www.bbc.com/news/world",
-  "https://www.nature.com/articles/d41586-020-00154-w"
-  // Add more URLs here
-];
-
+//const allArticles = [
+ // "https://openaccess.thecvf.com/content_ICCV_2019/papers/Zhao_Optimizing_the_F-Measure_for_Threshold-Free_Salient_Object_Detection_ICCV_2019_paper.pdf",
+//  "https://en.wikipedia.org/wiki/Weber%E2%80%93Fechner_law",
+//  "https://news.google.com/home?hl=en-US&gl=US:en",
+//  "https://www.bbc.com/news/world",
+//  "https://www.nature.com/articles/d41586-020-00154-w"
+//  // Add more URLs here
+//];
+let allArticles = [];
 let selectedArticles = [];
 let currentIndex = 0;
 
@@ -146,8 +146,24 @@ startButton.addEventListener('click', () => {
   document.getElementById('consentForm').style.display = 'none';
   surveySection.style.display = 'block';
 
+
+  fetch('articles.json')
+    .then(response => response.json())
+    .then(data => {
+      allArticles = data.articles;
+
+      // Randomly select 3 articles without replacement
+      selectedArticles = shuffleArray(allArticles).slice(0, 3);
+      currentIndex = 0;
+      showArticle();
+    })
+    .catch(error => {
+      console.error('Error loading articles:', error);
+      articleDiv.innerHTML = '<strong>Failed to load articles. Please try again later.</strong>';
+    });
+});
   // Randomly select 3 articles without replacement
-  selectedArticles = shuffleArray(allArticles).slice(0, 3);
+  //selectedArticles = shuffleArray(allArticles).slice(0, 3);
 
   currentIndex = 0;
   showArticle();
