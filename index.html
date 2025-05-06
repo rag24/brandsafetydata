@@ -3,7 +3,42 @@
 <head>
   <title>Survey</title>
 </head>
-<body>
+<div id="consentForm">
+  <h2>Consent Form</h2>
+  <p><strong>NEW JERSEY INSTITUTE OF TECHNOLOGY</strong><br>
+  323 MARTIN LUTHER KING BLVD.<br>
+  NEWARK, NJ 07102</p>
+
+  <p><strong>CONSENT TO PARTICIPATE IN A RESEARCH STUDY</strong></p>
+
+  <p><strong>TITLE OF STUDY:</strong><br>
+  I have been asked to participate in a research study under the direction of Dr(s). Yi Chen and Cristian Borcea.</p>
+
+  <p><strong>PURPOSE:</strong><br>
+  The goal of this study is to evaluate the effectiveness of existing brand safety tools that are used to evaluate whether online content is safe for advertisers. Advertisers do not want to risk their brand reputation by placing their products’ or services’ advertisements next to risky or unsafe content. However, inconsistency between the ratings of different brand safety tools has been reported, and this study aims to determine if the inconsistent ratings are a result of inaccuracy and unfairness in brand safety tools.</p>
+
+  <p><strong>DURATION:</strong><br>
+  My participation in this study will last for around 10-15 minutes.</p>
+
+  <p>I have been told that my participation in this research study is important for the success of the research and that the results of this research study are expected to produce the following benefits to society and for me as a subject.</p>
+
+  <p><strong>BENEFITS FOR SOCIETY AND THE SUBJECT:</strong><br>
+  I have been told that the benefits are a better understanding of the online advertising ecosystem, and specifically brand safety ratings for news articles. This study aims to uncover inaccuracies and unfairness in brand safety ratings of news content, which could result in online publishers’ content being wrongly devalued through lower advertising revenues.</p>
+
+  <p><strong>PROCEDURES:</strong><br>
+  I have been told that, during the course of this study, the following will occur:<br><br>
+  I will be asked to read three news articles and then provide my opinion on whether the article contains any content relating to potentially “unsafe” categories such as violence, drugs/alcohol, or offensive language.</p>
+
+  <label>
+    <input type="checkbox" id="consentCheckbox"> I have read the consent form and agree to participate.
+  </label>
+  <br><br>
+  <button id="startSurvey" disabled>Start Survey</button>
+  <hr>
+</div>
+
+<div id="surveySection" style="display: none;">
+ <body>
   <h2>News Article Survey</h2>
 
   <p>Read the following article:</p>
@@ -24,6 +59,28 @@
 
   <div id="result" style="margin-top: 20px;"></div>
 
+
+</body>
+</html>
+
+</div>
+
+<script>
+  const checkbox = document.getElementById('consentCheckbox');
+  const button = document.getElementById('startSurvey');
+
+  checkbox.addEventListener('change', () => {
+    button.disabled = !checkbox.checked;
+  });
+
+  button.addEventListener('click', () => {
+    document.getElementById('consentForm').style.display = 'none';
+    document.getElementById('surveySection').style.display = 'block';
+  });
+
+  
+</script>
+
   <script>
     // Define the URLs
     const articles = [
@@ -43,5 +100,3 @@
         `Thank you! The article you viewed was: <br><a href="${selected}" target="_blank">${selected}</a>`;
     });
   </script>
-</body>
-</html>
