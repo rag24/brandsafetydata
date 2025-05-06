@@ -164,34 +164,18 @@ document.getElementById('surveyForm').addEventListener('submit', function(e) {
   score: score});
 
   // SEND the data (no-cors mode)
-  fetch('https://script.google.com/macros/s/AKfycbwuSbfMb76EEyaQEmrHnanykpK7UJInohvqy0PLmBzBd4KGGswkXaNOMiG560__8ErE/exec', {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    //mode: 'no-cors'  // CORS disabled
-  }).then(response => {
-  if (!response.ok) {
-    throw new Error(`Server returned ${response.status}`);
-  }
-  return response.json(); // Parse JSON response
-})
-.then(result => {
-  if (result.status === 'success') {
-    result2Div.innerHTML = `<strong>Thank you! Your response has been recorded.</strong>`;
-  } else {
-    result2Div.innerHTML = `<strong>Unexpected response: ${JSON.stringify(result)}</strong>`;
-  }
-
- // .then(() => {
-    // We don't know the real status in no-cors mode, but assume success if no error is thrown
-   // result2Div.innerHTML = `<strong>Thank you! Your response has been recorded.</strong>`;
-
-//  .then(response => response.json())
- // .then(result => {
-  //  console.log('Server response:', result);
- // })
+  fetch('https://script.google.com/macros/s/AKfycbz3ZVjgqT2_sPf5zg0aXSRRB1YBNENg1YMqRu7m-WZXKPp_ceaVbOTl-K_9Ev08LtrBbA/exec', {
+     method: 'POST',
+     body: JSON.stringify(data),
+     headers: {
+       'Content-Type': 'application/json'
+     },
+     mode: 'no-cors'  // CORS disabled
+   })
+   .then(() => {
+     // We don't know the real status in no-cors mode, but assume success if no error is thrown
+     result2Div.innerHTML = `<strong>Thank you! Your response has been recorded.</strong>`;
+ 
 
     currentIndex++;
 
