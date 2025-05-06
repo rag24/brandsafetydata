@@ -82,6 +82,35 @@ I have read this entire form, or it has been read to me, and I understand it com
 
 
 
+<div id="instructionsSection" style="display: none;">
+    <h2>Instructions</h2>
+    <p>Please read the following instructions carefully before proceeding with the survey:</p>
+    <ul>
+      <li>You will be shown three news articles.</li>
+      <li>Your task is to evaluate each article and select the categories that apply to the content.</li>
+      <li>For each article, you will have 90 seconds to read it before being able to submit your response.</li>
+      <li>Ensure you take your time to read the article carefully before selecting any categories.</li>
+    </ul>
+    <button id="startSurveyFromInstructions">Start Survey</button>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
     
 <div id="surveySection" style="display: none;">
   <h2>News Article Survey</h2>
@@ -147,6 +176,28 @@ startButton.addEventListener('click', () => {
   document.getElementById('consentForm').style.display = 'none';
   surveySection.style.display = 'block';
 
+
+
+
+
+
+startButton.addEventListener('click', () => {
+      document.getElementById('consentForm').style.display = 'none';
+      instructionsSection.style.display = 'block';
+    });
+
+    // When "Start Survey" is clicked from instructions page: show survey section
+startSurveyFromInstructions.addEventListener('click', () => {
+      instructionsSection.style.display = 'none';
+      surveySection.style.display = 'block';
+
+
+
+
+
+
+
+  
 
   fetch('articles.json')
     .then(response => response.json())
