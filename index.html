@@ -179,7 +179,7 @@ document.getElementById('surveyForm').addEventListener('submit', function(e) {
         result1Div.innerHTML = '';
         result2Div.innerHTML = '';
         showArticle();
-        submitButton.disabled = False;
+        submitButton.disabled = false;
       }, 1000); // 1 second pause before showing next article
     } else {
       // All done
@@ -191,7 +191,7 @@ document.getElementById('surveyForm').addEventListener('submit', function(e) {
     }
   })
   .catch(error => {
-    submitButton.disabled = False;
+    submitButton.disabled = false;
     console.error('Error submitting the request:', error);
     result2Div.innerHTML = `<strong>Error submitting your response. Please try again.</strong>`;
   });
