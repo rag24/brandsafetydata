@@ -28,7 +28,7 @@
 
   <p><strong>PROCEDURES:</strong><br>
   I have been told that, during the course of this study, the following will occur:<br><br>
-  I will be asked to read three news articles and then provide my opinion on whether the article contains any content relating to potentially “unsafe” categories such as violence, drugs/alcohol, or offensive language.</p>
+  I will be asked to read four news articles and then provide my opinion on whether the article contains any content relating to potentially “unsafe” categories such as violence, drugs/alcohol, or offensive language.</p>
 
   <p><strong>PARTICIPANTS:</strong><br>
   I will be one of about 500 participants in this study.</p>
@@ -86,12 +86,12 @@ I have read this entire form, or it has been read to me, and I understand it com
     <h2>Instructions</h2>
     <p>Please read the following instructions carefully before proceeding with the survey:</p>
     <ul>
-      <li>You will be shown three news articles. Each article is only provided as a link, so you must click the link to open the article. Read the article in the new tab and then return to this tab to answer the questions. </li>
-      <li>Your task is to evaluate each of the three articles and select the categories that apply to the content.</li>
+      <li>You will be shown four news articles. Each article is only provided as a link, so you must click the link to open the article. Read the article in the new tab and then return to this tab to answer the questions. </li>
+      <li>Your task is to evaluate each of the four articles and select the categories that apply to the content.</li>
       <li>For each article, you will be required to spend at least 90 seconds reading it before being able to submit your response. If it takes longer, that is fine because you are given up to 1 hour to complete this task, which is plenty of time. </li>
       <li>Ensure you take your time to read the article carefully before selecting any categories.</li>
       <li>You are able to withdraw your participation in this study at any point for any reason, including if the news article content you are reading causes you distress.</li>
-      <li>At the end of the survey, the webpage will print out your responses to each of the three articles. YOU MUST COPY THIS TEXT AND PASTE IT IN THE DESIGNATED BOX IN THE MTURK INTERFACE. This is how we confirm that the survey was completed and will approve the HIT. FAILURE TO DO THIS MEANS YOU WILL NOT BE PAID.</li>
+      <li>At the end of the survey, the webpage will print out your responses to each of the four articles. YOU MUST COPY THIS TEXT AND PASTE IT IN THE DESIGNATED BOX IN THE MTURK INTERFACE. This is how we confirm that the survey was completed and will approve the HIT. FAILURE TO DO THIS MEANS YOU WILL NOT BE PAID.</li>
     </ul>
     <button id="startSurveyFromInstructions">Start Survey</button>
   </div>
@@ -200,7 +200,7 @@ instructionsbutton.addEventListener('click', () => {
       allArticles = data.articles;
 
       // Randomly select 3 articles without replacement
-      selectedArticles = shuffleArray(allArticles).slice(0, 3);
+      selectedArticles = shuffleArray(allArticles).slice(0, 4);
       currentIndex = 0;
       showArticle();
     })
@@ -210,7 +210,7 @@ instructionsbutton.addEventListener('click', () => {
     });
 });
   // Randomly select 3 articles without replacement
-  //selectedArticles = shuffleArray(allArticles).slice(0, 3);
+  //selectedArticles = shuffleArray(allArticles).slice(0, 4);
 
  // currentIndex = 0;
  // showArticle();
@@ -269,7 +269,7 @@ document.getElementById('surveyForm').addEventListener('submit', function(e) {
   document.getElementById('surveyForm').style.display = 'none';
 
   let summaryHTML = '<strong>Survey complete! Thank you for participating.</strong><br><br>';
-  summaryHTML += '<strong>COPY THE FOLLOWING TEXT (1-3) AND PASTE IT IN THE MTURK INTERFACE TO PROVE YOU COMPLETED THE SURVEY</strong><br>';
+  summaryHTML += '<strong>COPY THE FOLLOWING TEXT (1-4) AND PASTE IT IN THE MTURK INTERFACE TO PROVE YOU COMPLETED THE SURVEY</strong><br>';
 
   responses.forEach((response, index) => {
     summaryHTML += `${index + 1}. <a href="${response.article}" target="_blank">${response.article}</a><br>Rating: ${response.score}<br><br>`;
