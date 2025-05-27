@@ -90,6 +90,7 @@ I have read this entire form, or it has been read to me, and I understand it com
       <li>Your task is to evaluate each of the four articles and select the categories (out of 12 brand safety categories) that apply to the content. If no categories apply, you can select the option titled "None"</li>
       <li>For each article, you will be required to spend at least 90 seconds reading it before being able to submit your response. If it takes longer, that is fine because you are given up to 1 hour to complete this task, which is plenty of time. </li>
       <li>Ensure you take your time to read the article carefully before selecting any categories.</li>
+      </li> For each article you must choose which categories of unsafe content the article falls under. If you select any of the 12 categories, you must also select the "some unsafe content" button. If none of the categories apply select "None". Failure to do one of these two things for each of the four articles means you will not be paid. </li>
       <li>You are able to withdraw your participation in this study at any point for any reason, including if the news article content you are reading causes you distress.</li>
       <li>At the end of the survey, the webpage will print out your responses to each of the four articles. YOU MUST COPY THIS TEXT AND PASTE IT IN THE DESIGNATED BOX IN THE MTURK INTERFACE. This is how we confirm that the survey was completed and will approve the HIT. FAILURE TO DO THIS MEANS YOU WILL NOT BE PAID.</li>
     </ul>
@@ -121,7 +122,7 @@ I have read this entire form, or it has been read to me, and I understand it com
   <div id="article"></div>
 
  <form id="surveyForm">
-  <p>Select all categories that apply to this article:</p>
+  <p>Select all categories that apply to this article. Either select all of the categories that apply (from first 12 options) and then also select "Some Unsafe Content" or select "None" if none of the categories apply. Failure to do one of these two options means you will not be paid. :</p>
   
   <div id="categories">
     <label><input type="checkbox" name="categories" value="Adult & Explicit Sexual Content"> Adult & Explicit Sexual Content</label><br>
@@ -136,6 +137,7 @@ I have read this entire form, or it has been read to me, and I understand it com
     <label><input type="checkbox" name="categories" value="Terrorism"> Terrorism</label><br>
     <label><input type="checkbox" name="categories" value="Sensitive Social Issues"> Sensitive Social Issues</label><br>
     <label><input type="checkbox" name="categories" value="Misinformation"> Misinformation</label><br>
+    <label><input type="checkbox" name="categories" value="Some Unsafe Content"> Some Unsafe Content</label><br>
     <label><input type="checkbox" name="categories" value="None"> None</label><br>
   </div>
 
@@ -270,7 +272,7 @@ document.getElementById('surveyForm').addEventListener('submit', function(e) {
   document.getElementById('surveyForm').style.display = 'none';
 
   let summaryHTML = '<strong>Survey complete! Thank you for participating.</strong><br><br>';
-  summaryHTML += '<strong>COPY THE FOLLOWING TEXT (1-4) AND PASTE IT IN THE MTURK INTERFACE TO PROVE YOU COMPLETED THE SURVEY</strong><br>';
+  summaryHTML += '<strong>COPY ALL OF THE TEXT BELOW THIS POINT AND PASTE IT IN THE MTURK INTERFACE TO PROVE YOU COMPLETED THE SURVEY. FAILURE TO COPY AND PASTE ALL OF THIS TEXT MEANS YOU WILL NOT BE PAID.</strong><br>';
 
   responses.forEach((response, index) => {
     summaryHTML += `${index + 1}. <a href="${response.article}" target="_blank">${response.article}</a><br>Rating: ${response.score}<br><br>`;
